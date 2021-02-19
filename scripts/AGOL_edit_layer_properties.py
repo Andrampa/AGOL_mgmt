@@ -2,6 +2,15 @@ from arcgis.gis import GIS
 import country_converter as coco
 converter = coco.CountryConverter()
 
+images_urls = {'COL': 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/9734c572ab5c4dc09b1c12887c42c633/data',
+              'COD' : 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/70dd8165fdbf4833b81794a8cbba0bae/data',
+              'LBR' : 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/eb7329eca6e64b29a0d8b90416e4557a/data',
+              'MLI' : 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/f07376174a884649881d5d0dec047812/data',
+              'NER' : 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/cb1b47c711be40d2b14bc81cbb268c13/data',
+              'SLE' : 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/482e512295de4f98aeb7349dd841a798/data',
+              'SOM' : 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/da1233e24726490dbfd8335284b1f928/data',
+              'ZWE' : 'https://hqfao.maps.arcgis.com/sharing/rest/content/items/defb0b94744142d0b364a6150c6eedda/data'}
+
 def main():
     #connecting to AGOL
     gis = GIS('home')
@@ -49,7 +58,7 @@ def main():
         cut_description_after = "<b>household </b>interviews from "
         layer_view_description = parent_description[:parent_description.index(cut_description_after) + len(cut_description_after)] + layer_view_standard_name
         # applying all country properties to layer view
-        layer_view.update(item_properties={'accessInformation': parent_credits, 'snippet' : layer_view_snippet, 'description' : layer_view_description, 'licenseInfo' : parent_license_info})
+        layer_view.update(item_properties={'accessInformation': parent_credits, 'snippet' : layer_view_snippet, 'description' : layer_view_description, 'licenseInfo' : parent_license_info}, thumbnail=images_urls[layer_view_iso3])
 
 
 if __name__ == "__main__":
