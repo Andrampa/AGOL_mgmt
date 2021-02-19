@@ -7,7 +7,7 @@ def main():
     gis = GIS('home')
 
     #searching the parent feature layer
-    search_results = gis.content.search(query="title: Raw Household Data, owner: boneill_hqfao", item_type="Feature *",
+    search_results = gis.content.search(query="title: Raw Household Data", item_type="Feature *",
                                     max_items=150)
     
     #getting parent feature layer properties
@@ -32,7 +32,7 @@ def main():
         parent_table_dict[field_name] = [actualType, type, alias]
 
     #searching all country layer views (by tag)
-    search_results = gis.content.search(query="tags: Country view round 1, owner: boneill_hqfao", item_type="Feature *",
+    search_results = gis.content.search(query="tags: Country view round 1", item_type="Feature *",
                                     max_items=150)
 
     #looping through each layer for editing properties based on parent ones.
